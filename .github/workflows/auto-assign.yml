@@ -1,0 +1,35 @@
+
+
+name: Auto Assign Reviewers
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const author = context.payload.pull_request.user.login
+
+            // update these with your actual github usernames
+            const team = {
+              backend:  '78Prash',
+              frontend: 'sujalsingh09',
+              devops:   'Harsh-02W',
+            }
+
+            const reviewers = Object.values(team).filter(u => u !== author)
+
+            await github.rest.pulls.requestReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              reviewers,
+            })
