@@ -1,0 +1,11 @@
+backend:
+  - changed-files:
+    - any-glob-to-any-file: ['backend/**', '**/*.java']
+
+frontend:
+  - changed-files:
+    - any-glob-to-any-file: ['frontend/**']
+
+devops:
+  - changed-files:
+    - any-glob-to-any-file: ['.github/**', '**/Dockerfile', 'docker-compose.yml', 'k8s/**', 'infrastructure/**']

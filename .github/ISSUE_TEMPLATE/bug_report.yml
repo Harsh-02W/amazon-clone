@@ -1,0 +1,23 @@
+name: Bug Report
+description: Something is broken
+labels: [bug]
+
+body:
+  - type: dropdown
+    attributes:
+      label: Area
+      options: [Backend, Frontend, DevOps]
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
